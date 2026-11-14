@@ -53,4 +53,7 @@ in the frame, not just a smoke trail.
 `main.py` (Python 3.13 standard library only) copies `entry.png`, held in
 this repository, to `$MAKEFUN_OUTPUT_DIR/entry.png` (default `/output`).
 It reads no network and writes the same bytes on every run, so two runs
-produce byte-identical output.
+produce byte-identical output. After copying, it verifies the copy by
+comparing the SHA-256 digest of the source and the destination, and fails
+loudly if they ever differ — so a truncated or corrupted copy can never
+pass as the entry.
